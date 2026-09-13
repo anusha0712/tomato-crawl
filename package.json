@@ -10,7 +10,8 @@
     "matrix": "tsx scripts/build-matrix.ts",
     "check-data": "tsx scripts/check-data.ts",
     "audit": "tsx scripts/audit.mjs",
-    "art": "tsx scripts/build-art-manifest.ts"
+    "art": "tsx scripts/build-art-manifest.ts",
+    "audit:journey": "tsx scripts/audit-journey.mjs"
   },
   "dependencies": {
     "leaflet": "^1.9.4",

@@ -36,7 +36,7 @@ export function RouteTicket({ route, day, onDayChange, onMove, onRemove, onReord
   const totalMinutes = travelMinutes + itinerary.dwellMinutes
 
   return (
-    <section className={styles.ticket} aria-labelledby="route-heading">
+    <section id="route-ticket" className={styles.ticket} aria-labelledby="route-heading">
       <span className={styles.perf} aria-hidden="true" />
 
       <header className={styles.head}>
