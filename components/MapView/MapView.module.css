@@ -1,0 +1,39 @@
+.host { position: relative; height: 100%; min-height: 300px; }
+
+.map {
+  height: 100%;
+  width: 100%;
+  border: var(--map-frame);
+  border-radius: var(--map-radius);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hint {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  z-index: 400;
+  margin: 0;
+  padding: 5px 9px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-raised);
+  border: 1px solid var(--rule-strong);
+  color: var(--ink-soft);
+  font-family: var(--font-ui), monospace;
+  font-size: 9.5px;
+  text-transform: var(--ui-transform);
+  letter-spacing: 0.08em;
+  pointer-events: none;
+}
+
+/* Leaflet wraps divIcons in its own element; strip its default chrome. */
+.pinWrap { background: none !important; border: 0 !important; }
+
+.pin { display: block; color: var(--ink-faint); filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3)); }
+.pin svg { display: block; }
+
+.pinWrap .pinHeld { color: var(--rule-strong); opacity: 0.9; }
+.pinWrap .pinActive { color: var(--marker-fill); }
+/* Numbered pins are route members. */
+.pinWrap .pin:has(text) { color: var(--marker-fill); }

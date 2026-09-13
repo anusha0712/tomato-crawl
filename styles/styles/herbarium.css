@@ -1,0 +1,123 @@
+/* HERBARIUM — Solanum lycopersicum, pressed and mounted.
+   Specimen sheets on near-black, gold hairlines, mounting corners, a didone
+   display face and accession numbers. The most restrained of the five. */
+[data-style='herbarium'] {
+  --bg: #0e0e10;
+  --bg-raised: #16161a;
+  --bg-sunken: #08080a;
+  --ink: #ede6d9;
+  --ink-soft: #c3baa9;
+  --ink-faint: #98907f;
+  --rule: #26262c;
+  --rule-strong: #4a4436;
+  --accent: #c9a253;
+  --accent-ink: #12120f;
+  --accent-soft: #221d12;
+  --flag: #d9927a;
+  --flag-bg: #241713;
+  --ok: #90a878;
+  --focus: #c9a253;
+
+  --font-display: var(--f-bodoni);
+  --font-body: var(--f-spectral);
+  --font-ui: var(--f-mono);
+  --display-weight: 500;
+  --display-tracking: 0.004em;
+  --display-transform: none;
+  --display-style: italic;
+  --display-leading: 1.08;
+  --ui-transform: uppercase;
+  --ui-tracking: 0.2em;
+  --ui-weight: 400;
+
+  --radius: 0px;
+  --radius-sm: 0px;
+  --radius-pill: 0px;
+  --card-bg: var(--bg-raised);
+  --card-border: 1px solid var(--rule-strong);
+  --card-shadow: none;
+  --card-pad-t: 26px;
+  --card-pad-r: 30px;
+  --card-pad-b: 26px;
+  --entry-gap: 30px;
+
+  /* The specimen label bar. */
+  --edge-display: block;
+  --edge-height: 1px;
+  --edge-bg: linear-gradient(90deg, var(--accent) 0 64px, var(--rule) 64px 100%);
+  --edge-border: 0;
+
+  --spine-display: block;
+  --spine-width: 1px;
+  --spine-bg: var(--rule-strong);
+
+  --index-size: 48px;
+  --index-radius: 0px;
+  --index-bg: transparent;
+  --index-ink: var(--accent);
+  --index-border: 1px solid var(--accent);
+  --index-font: var(--font-ui);
+  --index-weight: 400;
+  --index-scale: 0.62;
+
+  --page-ornament: none;
+  --texture-opacity: 0.035;
+
+  /* text on the page ground, which is not always the same as on a card */
+  --bg-ink: var(--ink);
+  --bg-ink-soft: var(--ink-soft);
+  --bg-ink-faint: var(--ink-faint);
+  --bg-accent: var(--accent);
+  --bg-rule: var(--rule);
+
+  /* recessed surfaces inside a card */
+  --well-bg: #101014;
+  --well-ink: var(--ink-soft);
+
+  /* slot visibility */
+  --plate-display: block;
+  --variety-label-display: block;
+  --binomial-display: block;
+
+  --illo-fill: none;
+  --illo-stroke: var(--accent);
+  --illo-stroke-w: 1.35;
+  --illo-accent: var(--ink-soft);
+  --illo-leaf: none;
+
+  --map-filter: invert(0.93) hue-rotate(182deg) saturate(0.22) contrast(0.88) sepia(0.3);
+  --map-frame: 1px solid var(--rule-strong);
+  --map-radius: 0px;
+  --marker-fill: var(--accent);
+  --marker-ink: #12120f;
+  --line: 1 4;
+  --pill-ink-bg: var(--ink);
+  --pill-ink-fg: var(--bg);
+  --pin-r: 0;
+  --pill-r: var(--radius-pill);
+  --rail-w: 68px;
+  --thumb-ratio: 1 / 1;
+  --dur: 340ms;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  /* --- chrome (dialled down in this style) -------------------------------- */
+  --hero-bg: var(--bg);
+  --hero-ink: var(--bg-ink);
+  --hero-ink-soft: var(--bg-ink-soft);
+  --hero-script: var(--bg-ink-faint);
+  --nav-bg: var(--bg-raised);
+  --promo-bg: var(--bg-sunken);
+  --promo-ink: var(--ink);
+  --promo2-bg: var(--accent-soft);
+  --promo2-ink: var(--flag);
+  --footer-bg: var(--bg-sunken);
+  --footer-ink: var(--ink-soft);
+  --thumb-display: none;
+  --thumb-pad: 0px;
+  --thumb-radius: 0px;
+  --thumb-border: 0;
+  --thumb-display-bg: transparent;
+  --thumb-bg: var(--bg-sunken);
+  --script-display: none;
+  --font-script: var(--font-display);
+}

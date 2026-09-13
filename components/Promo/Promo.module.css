@@ -1,0 +1,105 @@
+.plan {
+  position: relative;
+  overflow: hidden;
+  padding: 24px 22px 22px;
+  border-radius: var(--radius);
+  background: var(--promo-bg);
+  color: var(--promo-ink);
+  border: var(--card-border);
+}
+
+.planArt {
+  position: absolute;
+  right: -14px;
+  top: -10px;
+  opacity: 0.55;
+  --illo-stroke: var(--promo-ink);
+  --illo-fill: none;
+  --illo-accent: var(--promo-ink);
+  --illo-stroke-w: 1.3;
+}
+
+.planTitle {
+  position: relative;
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: var(--display-weight);
+  font-style: var(--display-style, normal);
+  text-transform: var(--display-transform);
+  letter-spacing: var(--display-tracking);
+  font-size: clamp(26px, 3vw, 34px);
+  line-height: 1.02;
+  color: var(--promo-ink);
+}
+
+.points {
+  list-style: none;
+  margin: 16px 0 18px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-family: var(--font-ui), sans-serif;
+  font-size: 10.5px;
+  font-weight: var(--ui-weight);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  opacity: 0.82;
+}
+
+.planCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: 100%;
+  min-height: 46px;
+  padding: 0 18px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  border: 0;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  font-family: var(--font-ui), sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: var(--ui-transform);
+  letter-spacing: var(--ui-tracking);
+  transition: filter var(--dur) var(--ease);
+}
+.planCta:hover { filter: brightness(1.09); }
+
+.season {
+  display: var(--script-display);
+  position: relative;
+  overflow: hidden;
+  padding: 26px 22px;
+  border-radius: var(--radius);
+  background: var(--promo2-bg);
+  color: var(--promo2-ink);
+  min-height: 150px;
+}
+.seasonScript {
+  font-family: var(--font-script), cursive;
+  font-size: clamp(26px, 3.2vw, 36px);
+  line-height: 1.05;
+  max-width: 9ch;
+}
+.seasonKicker {
+  margin-top: 12px;
+  font-family: var(--font-ui), sans-serif;
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  opacity: 0.72;
+  max-width: 20ch;
+}
+.seasonArt {
+  position: absolute;
+  right: -6px;
+  bottom: -8px;
+  --illo-stroke: var(--promo2-ink);
+  --illo-fill: color-mix(in srgb, var(--promo2-ink) 14%, transparent);
+  --illo-accent: var(--promo2-ink);
+  opacity: 0.55;
+}

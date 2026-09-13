@@ -1,0 +1,658 @@
+{
+  "generatedBy": "scripts/build-matrix.ts",
+  "generatedOn": "2026-09-10",
+  "method": "great-circle distance x 1.25 detour factor, 80 m/min walking pace",
+  "stops": 13,
+  "matrix": {
+    "hanis-sundae": {
+      "hanis-toast": {
+        "meters": 0,
+        "walkMinutes": 0
+      },
+      "elbow-bialy": {
+        "meters": 1622,
+        "walkMinutes": 25
+      },
+      "unnecessary-tomato": {
+        "meters": 1071,
+        "walkMinutes": 17
+      },
+      "birdee-danish": {
+        "meters": 2581,
+        "walkMinutes": 40
+      },
+      "radio-croissant": {
+        "meters": 2970,
+        "walkMinutes": 46
+      },
+      "radio-sandwich": {
+        "meters": 2970,
+        "walkMinutes": 46
+      },
+      "librae-danish": {
+        "meters": 137,
+        "walkMinutes": 2
+      },
+      "frenzie-pie": {
+        "meters": 4298,
+        "walkMinutes": 67
+      },
+      "lisbonata-softserve": {
+        "meters": 6848,
+        "walkMinutes": 107
+      },
+      "caffe-panna-sungold": {
+        "meters": 3008,
+        "walkMinutes": 47
+      },
+      "rigor-hill-focaccia": {
+        "meters": 1751,
+        "walkMinutes": 27
+      },
+      "go-greek-bowl": {
+        "meters": 423,
+        "walkMinutes": 7
+      }
+    },
+    "hanis-toast": {
+      "hanis-sundae": {
+        "meters": 0,
+        "walkMinutes": 0
+      },
+      "elbow-bialy": {
+        "meters": 1622,
+        "walkMinutes": 25
+      },
+      "unnecessary-tomato": {
+        "meters": 1071,
+        "walkMinutes": 17
+      },
+      "birdee-danish": {
+        "meters": 2581,
+        "walkMinutes": 40
+      },
+      "radio-croissant": {
+        "meters": 2970,
+        "walkMinutes": 46
+      },
+      "radio-sandwich": {
+        "meters": 2970,
+        "walkMinutes": 46
+      },
+      "librae-danish": {
+        "meters": 137,
+        "walkMinutes": 2
+      },
+      "frenzie-pie": {
+        "meters": 4298,
+        "walkMinutes": 67
+      },
+      "lisbonata-softserve": {
+        "meters": 6848,
+        "walkMinutes": 107
+      },
+      "caffe-panna-sungold": {
+        "meters": 3008,
+        "walkMinutes": 47
+      },
+      "rigor-hill-focaccia": {
+        "meters": 1751,
+        "walkMinutes": 27
+      },
+      "go-greek-bowl": {
+        "meters": 423,
+        "walkMinutes": 7
+      }
+    },
+    "elbow-bialy": {
+      "hanis-sundae": {
+        "meters": 1622,
+        "walkMinutes": 25
+      },
+      "hanis-toast": {
+        "meters": 1622,
+        "walkMinutes": 25
+      },
+      "unnecessary-tomato": {
+        "meters": 552,
+        "walkMinutes": 9
+      },
+      "birdee-danish": {
+        "meters": 2037,
+        "walkMinutes": 32
+      },
+      "radio-croissant": {
+        "meters": 3644,
+        "walkMinutes": 57
+      },
+      "radio-sandwich": {
+        "meters": 3644,
+        "walkMinutes": 57
+      },
+      "librae-danish": {
+        "meters": 1504,
+        "walkMinutes": 23
+      },
+      "frenzie-pie": {
+        "meters": 2680,
+        "walkMinutes": 42
+      },
+      "lisbonata-softserve": {
+        "meters": 5459,
+        "walkMinutes": 85
+      },
+      "caffe-panna-sungold": {
+        "meters": 3255,
+        "walkMinutes": 51
+      },
+      "rigor-hill-focaccia": {
+        "meters": 1357,
+        "walkMinutes": 21
+      },
+      "go-greek-bowl": {
+        "meters": 1518,
+        "walkMinutes": 24
+      }
+    },
+    "unnecessary-tomato": {
+      "hanis-sundae": {
+        "meters": 1071,
+        "walkMinutes": 17
+      },
+      "hanis-toast": {
+        "meters": 1071,
+        "walkMinutes": 17
+      },
+      "elbow-bialy": {
+        "meters": 552,
+        "walkMinutes": 9
+      },
+      "birdee-danish": {
+        "meters": 2077,
+        "walkMinutes": 32
+      },
+      "radio-croissant": {
+        "meters": 3321,
+        "walkMinutes": 52
+      },
+      "radio-sandwich": {
+        "meters": 3321,
+        "walkMinutes": 52
+      },
+      "librae-danish": {
+        "meters": 956,
+        "walkMinutes": 15
+      },
+      "frenzie-pie": {
+        "meters": 3231,
+        "walkMinutes": 50
+      },
+      "lisbonata-softserve": {
+        "meters": 5905,
+        "walkMinutes": 92
+      },
+      "caffe-panna-sungold": {
+        "meters": 3054,
+        "walkMinutes": 48
+      },
+      "rigor-hill-focaccia": {
+        "meters": 1317,
+        "walkMinutes": 21
+      },
+      "go-greek-bowl": {
+        "meters": 1006,
+        "walkMinutes": 16
+      }
+    },
+    "birdee-danish": {
+      "hanis-sundae": {
+        "meters": 2581,
+        "walkMinutes": 40
+      },
+      "hanis-toast": {
+        "meters": 2581,
+        "walkMinutes": 40
+      },
+      "elbow-bialy": {
+        "meters": 2037,
+        "walkMinutes": 32
+      },
+      "unnecessary-tomato": {
+        "meters": 2077,
+        "walkMinutes": 32
+      },
+      "radio-croissant": {
+        "meters": 2322,
+        "walkMinutes": 36
+      },
+      "radio-sandwich": {
+        "meters": 2322,
+        "walkMinutes": 36
+      },
+      "librae-danish": {
+        "meters": 2565,
+        "walkMinutes": 40
+      },
+      "frenzie-pie": {
+        "meters": 3510,
+        "walkMinutes": 55
+      },
+      "lisbonata-softserve": {
+        "meters": 4632,
+        "walkMinutes": 72
+      },
+      "caffe-panna-sungold": {
+        "meters": 1572,
+        "walkMinutes": 25
+      },
+      "rigor-hill-focaccia": {
+        "meters": 3347,
+        "walkMinutes": 52
+      },
+      "go-greek-bowl": {
+        "meters": 2819,
+        "walkMinutes": 44
+      }
+    },
+    "radio-croissant": {
+      "hanis-sundae": {
+        "meters": 2970,
+        "walkMinutes": 46
+      },
+      "hanis-toast": {
+        "meters": 2970,
+        "walkMinutes": 46
+      },
+      "elbow-bialy": {
+        "meters": 3644,
+        "walkMinutes": 57
+      },
+      "unnecessary-tomato": {
+        "meters": 3321,
+        "walkMinutes": 52
+      },
+      "birdee-danish": {
+        "meters": 2322,
+        "walkMinutes": 36
+      },
+      "radio-sandwich": {
+        "meters": 0,
+        "walkMinutes": 0
+      },
+      "librae-danish": {
+        "meters": 3061,
+        "walkMinutes": 48
+      },
+      "frenzie-pie": {
+        "meters": 5769,
+        "walkMinutes": 90
+      },
+      "lisbonata-softserve": {
+        "meters": 6650,
+        "walkMinutes": 104
+      },
+      "caffe-panna-sungold": {
+        "meters": 902,
+        "walkMinutes": 14
+      },
+      "rigor-hill-focaccia": {
+        "meters": 4553,
+        "walkMinutes": 71
+      },
+      "go-greek-bowl": {
+        "meters": 3386,
+        "walkMinutes": 53
+      }
+    },
+    "radio-sandwich": {
+      "hanis-sundae": {
+        "meters": 2970,
+        "walkMinutes": 46
+      },
+      "hanis-toast": {
+        "meters": 2970,
+        "walkMinutes": 46
+      },
+      "elbow-bialy": {
+        "meters": 3644,
+        "walkMinutes": 57
+      },
+      "unnecessary-tomato": {
+        "meters": 3321,
+        "walkMinutes": 52
+      },
+      "birdee-danish": {
+        "meters": 2322,
+        "walkMinutes": 36
+      },
+      "radio-croissant": {
+        "meters": 0,
+        "walkMinutes": 0
+      },
+      "librae-danish": {
+        "meters": 3061,
+        "walkMinutes": 48
+      },
+      "frenzie-pie": {
+        "meters": 5769,
+        "walkMinutes": 90
+      },
+      "lisbonata-softserve": {
+        "meters": 6650,
+        "walkMinutes": 104
+      },
+      "caffe-panna-sungold": {
+        "meters": 902,
+        "walkMinutes": 14
+      },
+      "rigor-hill-focaccia": {
+        "meters": 4553,
+        "walkMinutes": 71
+      },
+      "go-greek-bowl": {
+        "meters": 3386,
+        "walkMinutes": 53
+      }
+    },
+    "librae-danish": {
+      "hanis-sundae": {
+        "meters": 137,
+        "walkMinutes": 2
+      },
+      "hanis-toast": {
+        "meters": 137,
+        "walkMinutes": 2
+      },
+      "elbow-bialy": {
+        "meters": 1504,
+        "walkMinutes": 23
+      },
+      "unnecessary-tomato": {
+        "meters": 956,
+        "walkMinutes": 15
+      },
+      "birdee-danish": {
+        "meters": 2565,
+        "walkMinutes": 40
+      },
+      "radio-croissant": {
+        "meters": 3061,
+        "walkMinutes": 48
+      },
+      "radio-sandwich": {
+        "meters": 3061,
+        "walkMinutes": 48
+      },
+      "frenzie-pie": {
+        "meters": 4177,
+        "walkMinutes": 65
+      },
+      "lisbonata-softserve": {
+        "meters": 6774,
+        "walkMinutes": 106
+      },
+      "caffe-panna-sungold": {
+        "meters": 3065,
+        "walkMinutes": 48
+      },
+      "rigor-hill-focaccia": {
+        "meters": 1621,
+        "walkMinutes": 25
+      },
+      "go-greek-bowl": {
+        "meters": 327,
+        "walkMinutes": 5
+      }
+    },
+    "frenzie-pie": {
+      "hanis-sundae": {
+        "meters": 4298,
+        "walkMinutes": 67
+      },
+      "hanis-toast": {
+        "meters": 4298,
+        "walkMinutes": 67
+      },
+      "elbow-bialy": {
+        "meters": 2680,
+        "walkMinutes": 42
+      },
+      "unnecessary-tomato": {
+        "meters": 3231,
+        "walkMinutes": 50
+      },
+      "birdee-danish": {
+        "meters": 3510,
+        "walkMinutes": 55
+      },
+      "radio-croissant": {
+        "meters": 5769,
+        "walkMinutes": 90
+      },
+      "radio-sandwich": {
+        "meters": 5769,
+        "walkMinutes": 90
+      },
+      "librae-danish": {
+        "meters": 4177,
+        "walkMinutes": 65
+      },
+      "lisbonata-softserve": {
+        "meters": 3791,
+        "walkMinutes": 59
+      },
+      "caffe-panna-sungold": {
+        "meters": 5081,
+        "walkMinutes": 79
+      },
+      "rigor-hill-focaccia": {
+        "meters": 3292,
+        "walkMinutes": 51
+      },
+      "go-greek-bowl": {
+        "meters": 4143,
+        "walkMinutes": 65
+      }
+    },
+    "lisbonata-softserve": {
+      "hanis-sundae": {
+        "meters": 6848,
+        "walkMinutes": 107
+      },
+      "hanis-toast": {
+        "meters": 6848,
+        "walkMinutes": 107
+      },
+      "elbow-bialy": {
+        "meters": 5459,
+        "walkMinutes": 85
+      },
+      "unnecessary-tomato": {
+        "meters": 5905,
+        "walkMinutes": 92
+      },
+      "birdee-danish": {
+        "meters": 4632,
+        "walkMinutes": 72
+      },
+      "radio-croissant": {
+        "meters": 6650,
+        "walkMinutes": 104
+      },
+      "radio-sandwich": {
+        "meters": 6650,
+        "walkMinutes": 104
+      },
+      "librae-danish": {
+        "meters": 6774,
+        "walkMinutes": 106
+      },
+      "frenzie-pie": {
+        "meters": 3791,
+        "walkMinutes": 59
+      },
+      "caffe-panna-sungold": {
+        "meters": 5749,
+        "walkMinutes": 90
+      },
+      "rigor-hill-focaccia": {
+        "meters": 6604,
+        "walkMinutes": 103
+      },
+      "go-greek-bowl": {
+        "meters": 6903,
+        "walkMinutes": 108
+      }
+    },
+    "caffe-panna-sungold": {
+      "hanis-sundae": {
+        "meters": 3008,
+        "walkMinutes": 47
+      },
+      "hanis-toast": {
+        "meters": 3008,
+        "walkMinutes": 47
+      },
+      "elbow-bialy": {
+        "meters": 3255,
+        "walkMinutes": 51
+      },
+      "unnecessary-tomato": {
+        "meters": 3054,
+        "walkMinutes": 48
+      },
+      "birdee-danish": {
+        "meters": 1572,
+        "walkMinutes": 25
+      },
+      "radio-croissant": {
+        "meters": 902,
+        "walkMinutes": 14
+      },
+      "radio-sandwich": {
+        "meters": 902,
+        "walkMinutes": 14
+      },
+      "librae-danish": {
+        "meters": 3065,
+        "walkMinutes": 48
+      },
+      "frenzie-pie": {
+        "meters": 5081,
+        "walkMinutes": 79
+      },
+      "lisbonata-softserve": {
+        "meters": 5749,
+        "walkMinutes": 90
+      },
+      "rigor-hill-focaccia": {
+        "meters": 4360,
+        "walkMinutes": 68
+      },
+      "go-greek-bowl": {
+        "meters": 3387,
+        "walkMinutes": 53
+      }
+    },
+    "rigor-hill-focaccia": {
+      "hanis-sundae": {
+        "meters": 1751,
+        "walkMinutes": 27
+      },
+      "hanis-toast": {
+        "meters": 1751,
+        "walkMinutes": 27
+      },
+      "elbow-bialy": {
+        "meters": 1357,
+        "walkMinutes": 21
+      },
+      "unnecessary-tomato": {
+        "meters": 1317,
+        "walkMinutes": 21
+      },
+      "birdee-danish": {
+        "meters": 3347,
+        "walkMinutes": 52
+      },
+      "radio-croissant": {
+        "meters": 4553,
+        "walkMinutes": 71
+      },
+      "radio-sandwich": {
+        "meters": 4553,
+        "walkMinutes": 71
+      },
+      "librae-danish": {
+        "meters": 1621,
+        "walkMinutes": 25
+      },
+      "frenzie-pie": {
+        "meters": 3292,
+        "walkMinutes": 51
+      },
+      "lisbonata-softserve": {
+        "meters": 6604,
+        "walkMinutes": 103
+      },
+      "caffe-panna-sungold": {
+        "meters": 4360,
+        "walkMinutes": 68
+      },
+      "go-greek-bowl": {
+        "meters": 1365,
+        "walkMinutes": 21
+      }
+    },
+    "go-greek-bowl": {
+      "hanis-sundae": {
+        "meters": 423,
+        "walkMinutes": 7
+      },
+      "hanis-toast": {
+        "meters": 423,
+        "walkMinutes": 7
+      },
+      "elbow-bialy": {
+        "meters": 1518,
+        "walkMinutes": 24
+      },
+      "unnecessary-tomato": {
+        "meters": 1006,
+        "walkMinutes": 16
+      },
+      "birdee-danish": {
+        "meters": 2819,
+        "walkMinutes": 44
+      },
+      "radio-croissant": {
+        "meters": 3386,
+        "walkMinutes": 53
+      },
+      "radio-sandwich": {
+        "meters": 3386,
+        "walkMinutes": 53
+      },
+      "librae-danish": {
+        "meters": 327,
+        "walkMinutes": 5
+      },
+      "frenzie-pie": {
+        "meters": 4143,
+        "walkMinutes": 65
+      },
+      "lisbonata-softserve": {
+        "meters": 6903,
+        "walkMinutes": 108
+      },
+      "caffe-panna-sungold": {
+        "meters": 3387,
+        "walkMinutes": 53
+      },
+      "rigor-hill-focaccia": {
+        "meters": 1365,
+        "walkMinutes": 21
+      }
+    }
+  }
+}

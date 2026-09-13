@@ -1,0 +1,198 @@
+/* Mobile view switcher. Hidden once both panes fit side by side. */
+.tabs {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  padding: 7px 14px;
+  background: color-mix(in srgb, var(--bg) 93%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--bg-rule);
+}
+.tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 44px;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  font-family: var(--font-ui), monospace;
+  font-size: 11px;
+  font-weight: var(--ui-weight);
+  text-transform: uppercase;
+  letter-spacing: var(--ui-tracking);
+  color: var(--bg-ink-faint);
+  transition: background-color 160ms var(--ease), color 160ms var(--ease);
+}
+.tab:hover { color: var(--bg-ink); }
+.tab[data-on] { background: var(--accent); color: var(--accent-ink); }
+
+.tabCount {
+  display: grid;
+  place-items: center;
+  min-width: 19px;
+  height: 19px;
+  padding: 0 5px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-ink);
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.main {
+  position: relative;
+  z-index: 1;
+  max-width: 1420px;
+  margin: 0 auto;
+  padding: 22px 18px 70px;
+}
+
+.listPane { min-width: 0; }
+.sidePane { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+/* The column scrolls, so its children must keep their own height instead of
+   being squeezed by flex. Without this the promo panel collapses to a sliver. */
+.sidePane > * { flex: 0 0 auto; }
+
+.filters { display: flex; flex-direction: column; gap: 7px; margin-bottom: 14px; }
+.filterRow { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.chip {
+  min-height: 44px;
+  padding: 0 15px;
+  background: transparent;
+  border: 1px solid var(--bg-rule);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  font-family: var(--font-ui), monospace;
+  font-size: 10.5px;
+  font-weight: var(--ui-weight);
+  text-transform: var(--ui-transform);
+  letter-spacing: var(--ui-tracking);
+  color: var(--bg-ink-soft);
+  transition: border-color 160ms var(--ease), color 160ms var(--ease), background-color 160ms var(--ease);
+}
+.chip:hover { border-color: var(--bg-accent); color: var(--bg-accent); }
+.chip[data-on] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+
+.countRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.countScript {
+  display: var(--script-display);
+  font-family: var(--font-script), cursive;
+  font-size: 19px;
+  line-height: 1;
+  color: var(--bg-ink-faint);
+  transform: rotate(-4deg);
+}
+
+.count {
+  font-family: var(--font-ui), monospace;
+  font-size: 10.5px;
+  font-weight: var(--ui-weight);
+  text-transform: var(--ui-transform);
+  letter-spacing: var(--ui-tracking);
+  color: var(--bg-ink-faint);
+  font-size: 13px;
+  text-transform: none;
+  letter-spacing: 0;
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: var(--display-weight);
+  color: var(--bg-ink);
+}
+
+/* The entries stack, and the spine runs behind them all at the rail centre
+   (34px = half the 68px rail column in StopEntry). Opaque cards hide it and it
+   shows only in the gaps; transparent ones let it run straight through, which
+   is how Transit gets a continuous subway line. */
+.entries {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--entry-gap);
+}
+.spine {
+  display: var(--spine-display);
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: calc(var(--rail-w) / 2 + clamp(12px, 1.6vw, 18px) - var(--spine-width) / 2);
+  width: var(--spine-width);
+  background: var(--spine-bg);
+  z-index: 0;
+  border-radius: var(--spine-width);
+}
+
+.none {
+  padding: 34px 20px;
+  text-align: center;
+  border: 1px dashed var(--bg-rule);
+  border-radius: var(--radius-sm);
+  color: var(--bg-ink-faint);
+  font-size: 14px;
+}
+
+.colophon {
+  margin-top: 30px;
+  padding-top: 18px;
+  border-top: 1px solid var(--bg-rule);
+  max-width: 64ch;
+  font-size: 12.5px;
+  line-height: 1.65;
+  color: var(--bg-ink-faint);
+}
+
+.mapWrap { height: 330px; }
+.mapSkeleton {
+  height: 100%;
+  border: var(--map-frame);
+  border-radius: var(--map-radius);
+  background: var(--bg-sunken);
+}
+
+/* --- Mobile: one pane at a time ------------------------------------------ */
+@media (max-width: 1059px) {
+  .main[data-view='stops'] .sidePane { display: none; }
+  .main[data-view='map'] .listPane,
+  .main[data-view='route'] .listPane { display: none; }
+  .main[data-view='map'] .sidePane > :last-child { display: none; }
+  .main[data-view='route'] .mapWrap { display: none; }
+  .main[data-view='map'] .mapWrap { height: min(70vh, 580px); }
+}
+
+/* --- Desktop: entries beside a sticky map and ticket ---------------------- */
+@media (min-width: 1060px) {
+  .tabs { display: none; }
+  .main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(370px, 430px);
+    gap: 32px;
+    align-items: start;
+    padding: 30px 26px 90px;
+  }
+  .sidePane {
+    position: sticky;
+    top: 20px;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    padding-right: 2px;
+  }
+  .mapWrap { height: 330px; }
+}
+
+@media (min-width: 1400px) {
+  .main { grid-template-columns: minmax(0, 1fr) 460px; }
+  .mapWrap { height: 380px; }
+}

@@ -1,0 +1,122 @@
+/* TRANSIT — the crawl drawn as an MTA line.
+   No cards at all: stops are bullets strung on a thick trunk line, set in a
+   heavy grotesque, on hard black. Zero radius, zero shadow, instant motion. */
+[data-style='transit'] {
+  --bg: #0b0b0c;
+  --bg-raised: #141416;
+  --bg-sunken: #000000;
+  --ink: #ffffff;
+  --ink-soft: #c2c2c6;
+  --ink-faint: #949499;
+  --rule: #2a2a2e;
+  --rule-strong: #45454b;
+  --accent: #ff4438;
+  --accent-ink: #0b0b0c;
+  --accent-soft: #2a1210;
+  --flag: #ffb02e;
+  --flag-bg: #2b1f06;
+  --ok: #4bc26a;
+  --focus: #ffb02e;
+
+  --font-display: var(--f-archivo);
+  --font-body: var(--f-archivo);
+  --font-ui: var(--f-archivo);
+  --display-weight: 800;
+  --display-tracking: -0.032em;
+  --display-transform: uppercase;
+  --display-leading: 0.94;
+  --ui-transform: uppercase;
+  --ui-tracking: 0.1em;
+  --ui-weight: 700;
+
+  --radius: 0px;
+  --radius-sm: 0px;
+  --radius-pill: 999px;
+  --card-bg: transparent;
+  --card-border: 0;
+  --card-shadow: none;
+  --card-pad-t: 0px;
+  --card-pad-r: 4px;
+  --card-pad-b: 38px;
+  --entry-gap: 0px;
+
+  /* No tear strip here — the line does the work instead. */
+  --edge-display: none;
+  --edge-height: 0px;
+  --edge-bg: none;
+  --edge-border: 0;
+
+  --spine-display: block;
+  --spine-width: 8px;
+  --spine-bg: var(--accent);
+
+  --index-size: 54px;
+  --index-radius: 999px;
+  --index-bg: var(--accent);
+  --index-ink: var(--accent-ink);
+  --index-border: 4px solid var(--bg);
+  --index-font: var(--font-ui);
+  --index-weight: 800;
+  --index-scale: 0.46;
+
+  --page-ornament: none;
+  --texture-opacity: 0;
+
+  /* text on the page ground, which is not always the same as on a card */
+  --bg-ink: var(--ink);
+  --bg-ink-soft: var(--ink-soft);
+  --bg-ink-faint: var(--ink-faint);
+  --bg-accent: var(--accent);
+  --bg-rule: var(--rule);
+
+  /* recessed surfaces inside a card */
+  --well-bg: #1b1b1f;
+  --well-ink: var(--ink-soft);
+
+  /* slot visibility */
+  --plate-display: none;
+  --variety-label-display: none;
+  --binomial-display: none;
+
+  --illo-fill: var(--accent);
+  --illo-stroke: var(--accent);
+  --illo-stroke-w: 0;
+  --illo-accent: var(--bg);
+  --illo-leaf: var(--accent);
+
+  --map-filter: invert(1) hue-rotate(180deg) saturate(0.15) contrast(1.15) brightness(0.86);
+  --map-frame: 2px solid var(--ink);
+  --map-radius: 0px;
+  --marker-fill: var(--accent);
+  --marker-ink: #ffffff;
+  --line: 0 0;
+  --pill-ink-bg: var(--ink);
+  --pill-ink-fg: var(--bg);
+  --pin-r: 999px;
+  --pill-r: var(--radius-pill);
+  --rail-w: 68px;
+  --thumb-ratio: 1 / 1;
+  --dur: 1ms;
+  --ease: linear;
+
+  /* --- chrome (dialled down in this style) -------------------------------- */
+  --hero-bg: var(--bg);
+  --hero-ink: var(--bg-ink);
+  --hero-ink-soft: var(--bg-ink-soft);
+  --hero-script: var(--bg-ink-faint);
+  --nav-bg: var(--bg-raised);
+  --promo-bg: var(--bg-sunken);
+  --promo-ink: var(--ink);
+  --promo2-bg: var(--accent-soft);
+  --promo2-ink: var(--flag);
+  --footer-bg: var(--bg-sunken);
+  --footer-ink: var(--ink-soft);
+  --thumb-display: none;
+  --thumb-pad: 0px;
+  --thumb-radius: 0px;
+  --thumb-border: 0;
+  --thumb-display-bg: transparent;
+  --thumb-bg: var(--bg-sunken);
+  --script-display: none;
+  --font-script: var(--font-display);
+}

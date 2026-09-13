@@ -1,0 +1,131 @@
+.nav {
+  position: relative;
+  z-index: 40;
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--bg-rule);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 1420px;
+  margin: 0 auto;
+  padding: 11px 26px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex: none;
+  min-height: 44px;
+  text-decoration: none;
+  color: var(--bg-ink);
+}
+.mark { --illo-fill: var(--accent-soft); --illo-stroke: var(--accent); --illo-accent: var(--ok); flex: none; }
+.word {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: var(--display-weight);
+  font-style: var(--display-style, normal);
+  text-transform: var(--display-transform);
+  letter-spacing: var(--display-tracking);
+  font-size: 21px;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex: 1;
+  max-width: 420px;
+  margin-left: auto;
+  padding: 0 15px;
+  min-height: 44px;
+  background: var(--bg-raised);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-pill);
+  color: var(--ink-faint);
+}
+.search:focus-within {
+  border-color: var(--accent);
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+.input {
+  flex: 1;
+  align-self: stretch;
+  min-height: 44px;
+  min-width: 0;
+  border: 0;
+  background: none;
+  outline: none;
+  font-family: var(--font-body), sans-serif;
+  font-size: 13.5px;
+  color: var(--ink);
+}
+.input::placeholder { color: var(--ink-faint); }
+/* Safari draws its own clear button that fights the pill shape. */
+.input::-webkit-search-decoration,
+.input::-webkit-search-cancel-button { -webkit-appearance: none; }
+
+.right { display: flex; align-items: center; gap: 10px; flex: none; }
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 20px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  font-family: var(--font-ui), sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: var(--ui-transform);
+  letter-spacing: var(--ui-tracking);
+  white-space: nowrap;
+  transition: filter var(--dur) var(--ease);
+}
+.cta:hover { filter: brightness(1.09); }
+
+.ctaShort { display: none; }
+@media (max-width: 400px) { .ctaShort { display: inline; } }
+
+.count {
+  display: grid;
+  place-items: center;
+  min-width: 19px;
+  height: 19px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: var(--accent-ink);
+  color: var(--accent);
+  font-size: 10.5px;
+  font-weight: 700;
+}
+
+@media (max-width: 880px) {
+  .inner { flex-wrap: wrap; padding: 10px 16px; gap: 10px; }
+  .search { order: 3; flex-basis: 100%; max-width: none; margin-left: 0; }
+  .right { margin-left: auto; }
+  .cta { padding: 0 14px; }
+}
+@media (max-width: 520px) {
+  .inner { padding: 10px 12px; gap: 8px; }
+  .word { font-size: 16px; }
+  .right { gap: 6px; min-width: 0; }
+  .cta { padding: 0 11px; font-size: 10.5px; letter-spacing: 0.06em; }
+}
+/* At the narrowest widths the two pills cannot both spell themselves out. */
+@media (max-width: 400px) {
+  .brand { min-width: 0; }
+  .word { font-size: 15px; }
+  .ctaLabel { display: none; }
+  .cta { padding: 0 13px; }
+}

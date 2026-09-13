@@ -1,0 +1,124 @@
+/* PACKET — a 1940s heirloom seed packet.
+   Aged stock, letterpress bite, engraved plates, a perforated tear strip across
+   the top of every entry, and lot numbers instead of tidy circles. */
+[data-style='packet'] {
+  --bg: #f2e7cf;
+  --bg-raised: #fbf4e4;
+  --bg-sunken: #e8dabc;
+  --ink: #2b2013;
+  --ink-soft: #574530;
+  --ink-faint: #715c40;
+  --rule: #d6c39b;
+  --rule-strong: #ab9569;
+  --accent: #a8380f;
+  --accent-ink: #fbf4e4;
+  --accent-soft: #ecd9b8;
+  --flag: #7d2709;
+  --flag-bg: #efd9c4;
+  --ok: #456326;
+  --focus: #a8380f;
+
+  --font-display: var(--f-fraunces);
+  --font-body: var(--f-karla);
+  --font-ui: var(--f-mono);
+  --display-weight: 600;
+  --display-tracking: -0.012em;
+  --display-transform: none;
+  --display-leading: 1.02;
+  --ui-transform: uppercase;
+  --ui-tracking: 0.15em;
+  --ui-weight: 500;
+
+  --radius: 2px;
+  --radius-sm: 1px;
+  --radius-pill: 2px;
+  --card-bg: var(--bg-raised);
+  --card-border: 1px solid var(--rule-strong);
+  --card-shadow: 3px 3px 0 rgba(43, 32, 19, 0.11);
+  --card-pad-t: 8px;
+  --card-pad-r: 26px;
+  --card-pad-b: 20px;
+  --entry-gap: 22px;
+
+  --edge-display: block;
+  --edge-height: 14px;
+  --edge-bg: radial-gradient(circle at 7px 100%, var(--bg) 3.6px, transparent 4px) 0 0 / 14px 100% repeat-x;
+  --edge-border: 0;
+
+  --spine-display: block;
+  --spine-width: 1px;
+  --spine-bg: repeating-linear-gradient(180deg, var(--rule-strong) 0 6px, transparent 6px 13px);
+
+  --index-size: 52px;
+  --index-radius: 1px;
+  --index-bg: transparent;
+  --index-ink: var(--accent);
+  --index-border: 1px solid var(--rule-strong);
+  --index-font: var(--font-ui);
+  --index-weight: 600;
+  --index-scale: 0.7;
+
+  /* Printer's registration crosses in the margins. */
+  --page-ornament:
+    linear-gradient(var(--rule) 0 0) 26px 26px / 1px 14px no-repeat,
+    linear-gradient(var(--rule) 0 0) 20px 32px / 14px 1px no-repeat;
+  --texture-opacity: 0.055;
+
+  /* text on the page ground, which is not always the same as on a card */
+  --bg-ink: var(--ink);
+  --bg-ink-soft: var(--ink-soft);
+  --bg-ink-faint: var(--ink-faint);
+  --bg-accent: var(--accent);
+  --bg-rule: var(--rule);
+
+  /* recessed surfaces inside a card */
+  --well-bg: var(--bg-sunken);
+  --well-ink: var(--ink-soft);
+
+  /* slot visibility */
+  --plate-display: block;
+  --variety-label-display: block;
+  --binomial-display: none;
+
+  --illo-fill: none;
+  --illo-stroke: var(--ink-soft);
+  --illo-stroke-w: 1.5;
+  --illo-accent: var(--accent);
+  --illo-leaf: none;
+
+  --map-filter: sepia(0.45) saturate(0.78) hue-rotate(-10deg) contrast(0.95);
+  --map-frame: 1px solid var(--rule-strong);
+  --map-radius: 2px;
+  --marker-fill: var(--accent);
+  --marker-ink: #fbf4e4;
+  --line: 3 8;
+  --pill-ink-bg: var(--ink);
+  --pill-ink-fg: var(--bg);
+  --pin-r: 2px;
+  --pill-r: var(--radius-pill);
+  --rail-w: 68px;
+  --thumb-ratio: 1 / 1;
+  --dur: 200ms;
+  --ease: cubic-bezier(0.2, 0.7, 0.3, 1);
+
+  /* --- chrome (dialled down in this style) -------------------------------- */
+  --hero-bg: var(--bg);
+  --hero-ink: var(--bg-ink);
+  --hero-ink-soft: var(--bg-ink-soft);
+  --hero-script: var(--bg-ink-faint);
+  --nav-bg: var(--bg-raised);
+  --promo-bg: var(--bg-sunken);
+  --promo-ink: var(--ink);
+  --promo2-bg: var(--accent-soft);
+  --promo2-ink: var(--flag);
+  --footer-bg: var(--bg-sunken);
+  --footer-ink: var(--ink-soft);
+  --thumb-display: none;
+  --thumb-pad: 0px;
+  --thumb-radius: 0px;
+  --thumb-border: 0;
+  --thumb-display-bg: transparent;
+  --thumb-bg: var(--bg-sunken);
+  --script-display: none;
+  --font-script: var(--font-display);
+}

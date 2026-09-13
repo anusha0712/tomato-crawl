@@ -1,0 +1,127 @@
+.masthead {
+  position: relative;
+  z-index: 2;
+  border-bottom: 1px solid var(--bg-rule);
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.inner {
+  position: relative;
+  max-width: 1420px;
+  margin: 0 auto;
+  padding: 20px 26px 30px;
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 26px;
+}
+
+.eyebrow {
+  font-family: var(--font-ui), monospace;
+  font-size: 10.5px;
+  font-weight: var(--ui-weight);
+  text-transform: var(--ui-transform);
+  letter-spacing: var(--ui-tracking);
+  color: var(--bg-ink-faint);
+}
+
+.titleBlock {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* Three lines, stepped, so the masthead reads as a printed cover rather than
+   a centred banner. */
+.title {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  color: var(--bg-ink);
+}
+.titleThe {
+  font-size: clamp(15px, 2vw, 21px);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-family: var(--font-ui), monospace;
+  font-weight: var(--ui-weight);
+  color: var(--bg-ink-faint);
+  margin-bottom: 6px;
+}
+.titleMain {
+  font-size: clamp(56px, 12.5vw, 132px);
+  line-height: 0.82;
+  color: var(--bg-accent);
+}
+.titleSub {
+  font-size: clamp(40px, 8.6vw, 92px);
+  line-height: 0.9;
+  align-self: flex-end;
+  margin-right: clamp(0px, 3vw, 40px);
+}
+
+.vine {
+  flex: none;
+  /* The plate sits on the page ground, not on a card, so it takes the
+     page-ground roles. Without this, Conserva draws a red vine on red. */
+  --illo-stroke: var(--bg-ink-faint);
+  --illo-fill: none;
+  --illo-accent: var(--bg-accent);
+  --illo-leaf: none;
+  opacity: 0.9;
+  margin-bottom: -6px;
+}
+
+.blurb {
+  max-width: 60ch;
+  margin-top: 22px;
+  font-size: 15px;
+  line-height: 1.62;
+  color: var(--bg-ink-soft);
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 24px 0 0;
+  border-top: 1px solid var(--bg-rule);
+}
+.stats > div {
+  flex: 1 1 130px;
+  padding: 13px 18px 0 0;
+}
+.stats dt {
+  font-family: var(--font-ui), monospace;
+  font-size: 9.5px;
+  font-weight: var(--ui-weight);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--bg-ink-faint);
+  margin-bottom: 4px;
+}
+.stats dd {
+  margin: 0;
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: var(--display-weight);
+  font-style: var(--display-style, normal);
+  text-transform: var(--display-transform);
+  letter-spacing: var(--display-tracking);
+  font-size: 25px;
+  line-height: 1;
+  color: var(--bg-ink);
+}
+
+@media (max-width: 900px) {
+  .vine { display: none; }
+  .titleSub { margin-right: 0; }
+  .inner { padding: 18px 18px 26px; }
+}

@@ -1,0 +1,134 @@
+/* CATALOGUE — the design-spec direction.
+   A vintage seed catalogue reissued as a modern product: cream ground, soft
+   18px surfaces, Playfair display over a humanist sans, Pinyon script used only
+   for rotated margin asides, and sage as the secondary that carries confirm
+   states, the map script and the sources rule.
+
+   Two deviations from the spec, both deliberate and both requested:
+     - Display face is Playfair Display, not Bodoni Moda.
+     - The map keeps this project's token-driven tile recolouring. */
+[data-style='catalogue'] {
+  --bg: #f7f0e2;
+  --bg-raised: #fffaf0;
+  --bg-sunken: #efe4cf;
+  --ink: #231610;
+  --ink-soft: #5a4838;
+  --ink-faint: #6f5c4a;
+  --rule: #e4d7c1;
+  --rule-strong: #c6b294;
+  --accent: #a4201a;
+  --accent-ink: #fdf6e7;
+  --accent-soft: #f6e2dc;
+  --accent-deep: #7a1411;
+  --pill-r: 999px;
+  --flag: #8c2a10;
+  --flag-bg: #f7e2d2;
+  --ok: #2f5d3a;
+  /* Focus ring is sage, per the spec. */
+  --focus: #2f5d3a;
+
+  --font-display: var(--f-playfair);
+  --font-body: var(--f-source);
+  --font-ui: var(--f-mono);
+  --font-script: var(--f-pinyon);
+  --display-weight: 700;
+  --display-tracking: -0.016em;
+  --display-transform: none;
+  --display-style: normal;
+  --display-leading: 1.02;
+  --ui-transform: uppercase;
+  --ui-tracking: 0.15em;
+  --ui-weight: 500;
+  --body-leading: 1.58;
+
+  --radius: 18px;
+  --radius-sm: 10px;
+  --radius-pill: 999px;
+  --card-bg: var(--bg-raised);
+  --card-border: 1px solid rgba(42, 26, 18, 0.12);
+  --card-shadow: 0 2px 0 rgba(42, 26, 18, 0.05), 0 14px 30px -22px rgba(42, 26, 18, 0.5);
+  --card-pad-t: 0px;
+  --card-pad-r: 22px;
+  --card-pad-b: 20px;
+  --entry-gap: 18px;
+
+  --edge-display: none;
+  --edge-height: 0px;
+  --edge-bg: none;
+  --edge-border: 0;
+
+  --spine-display: none;
+  --spine-width: 0px;
+  --spine-bg: none;
+
+  --index-size: 0px;
+  --index-radius: 999px;
+  --index-bg: transparent;
+  --index-ink: var(--accent);
+  --index-border: 0;
+  --index-font: var(--font-ui);
+  --index-weight: 600;
+  --index-scale: 0;
+
+  --page-ornament: none;
+  --texture-opacity: 0.022;
+
+  /* slot visibility */
+  --plate-display: block;
+  --variety-label-display: none;
+  --binomial-display: none;
+
+  /* recessed surfaces inside a card */
+  --well-bg: var(--bg-sunken);
+  --well-ink: var(--ink-soft);
+
+  /* text on the page ground */
+  --bg-ink: var(--ink);
+  --bg-ink-soft: var(--ink-soft);
+  --bg-ink-faint: var(--ink-faint);
+  --bg-accent: var(--accent);
+  --bg-rule: var(--rule);
+
+  --thumb-display: block;
+  --thumb-pad: 0px;
+  --thumb-radius: 12px;
+  --thumb-border: 1px solid var(--rule);
+  --thumb-display-bg: var(--thumb-bg);
+  --thumb-bg: #fbf4e7;
+  /* The spec calls for 3:4 portrait thumbnails, not squares. */
+  --rail-w: clamp(84px, 20%, 124px);
+  --thumb-ratio: 3 / 4;
+
+  --illo-fill: var(--accent-soft);
+  --illo-stroke: var(--accent);
+  --illo-stroke-w: 1.5;
+  --illo-accent: var(--ok);
+  --illo-leaf: #dde8da;
+
+  --map-filter: saturate(0.62) sepia(0.26) brightness(1.05) contrast(0.9);
+  --map-frame: 1px solid var(--rule);
+  --map-radius: 18px;
+  --marker-fill: var(--accent);
+  --marker-ink: #fffdf8;
+  /* Teardrop pin, and the route line's dash pattern. */
+  --pill-ink-bg: var(--ink);
+  --pill-ink-fg: var(--bg);
+  --pin-r: 50% 50% 50% 4px;
+  --line: 6 5;
+  --dur: 220ms;
+  --ease: cubic-bezier(0.2, 0.7, 0.3, 1);
+
+  /* chrome */
+  --hero-bg: #a4201a;
+  --hero-ink: #fffaf0;
+  --hero-ink-soft: #f2d9cd;
+  --hero-script: #edc6a6;
+  --nav-bg: #fdf8ee;
+  --promo-bg: #2c3d2c;
+  --promo-ink: #f1ecdf;
+  --promo2-bg: #f6d9d2;
+  --promo2-ink: #7c2118;
+  --footer-bg: #a4201a;
+  --footer-ink: #fffaf0;
+  --script-display: block;
+}

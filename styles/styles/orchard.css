@@ -1,0 +1,126 @@
+/* ORCHARD — the reference direction.
+   A warm editorial-commercial look: cream ground, deep red hero bleeding
+   full-width, high-contrast serif display, a connected script for margin
+   asides, soft rounded cards with illustration thumbnails, and a sage-green
+   promo panel. The most "product" of the styles — it wants art, not austerity. */
+[data-style='orchard'] {
+  --bg: #fbf6ec;
+  --bg-raised: #ffffff;
+  --bg-sunken: #f4ece0;
+  --ink: #2b1a15;
+  --ink-soft: #5c4139;
+  --ink-faint: #7a594a;
+  --rule: #ead9c6;
+  --rule-strong: #cdb49c;
+  --accent: #c1201d;
+  --accent-ink: #fffaf2;
+  --accent-soft: #fbe4df;
+  --flag: #9c2b12;
+  --flag-bg: #fbe6da;
+  --ok: #2f5638;
+  --focus: #c1201d;
+
+  --font-display: var(--f-playfair);
+  --font-body: var(--f-karla);
+  --font-ui: var(--f-karla);
+  --font-script: var(--f-sacramento);
+  --display-weight: 700;
+  --display-tracking: -0.018em;
+  --display-transform: none;
+  --display-style: normal;
+  --display-leading: 1.0;
+  --ui-transform: uppercase;
+  --ui-tracking: 0.13em;
+  --ui-weight: 700;
+  --body-leading: 1.55;
+
+  --radius: 14px;
+  --radius-sm: 9px;
+  --radius-pill: 999px;
+  --card-bg: var(--bg-raised);
+  --card-border: 1px solid var(--rule);
+  --card-shadow: 0 1px 2px rgba(43, 26, 21, 0.05), 0 10px 26px -20px rgba(43, 26, 21, 0.35);
+  --card-pad-t: 0px;
+  --card-pad-r: 20px;
+  --card-pad-b: 18px;
+  --entry-gap: 16px;
+
+  /* No tear strip; the thumbnail does the work at the top of each card. */
+  --edge-display: none;
+  --edge-height: 0px;
+  --edge-bg: none;
+  --edge-border: 0;
+
+  --spine-display: none;
+  --spine-width: 0px;
+  --spine-bg: none;
+
+  --index-size: 0px;
+  --index-radius: 999px;
+  --index-bg: transparent;
+  --index-ink: var(--accent);
+  --index-border: 0;
+  --index-font: var(--font-ui);
+  --index-weight: 700;
+  --index-scale: 0;
+
+  --page-ornament: none;
+  --texture-opacity: 0.018;
+
+  /* slot visibility */
+  --plate-display: block;
+  --variety-label-display: none;
+  --binomial-display: none;
+
+  /* recessed surfaces inside a card */
+  --well-bg: var(--bg-sunken);
+  --well-ink: var(--ink-soft);
+
+  /* text on the page ground */
+  --bg-ink: var(--ink);
+  --bg-ink-soft: var(--ink-soft);
+  --bg-ink-faint: var(--ink-faint);
+  --bg-accent: var(--accent);
+  --bg-rule: var(--rule);
+
+  --illo-fill: var(--accent-soft);
+  --illo-stroke: var(--accent);
+  --illo-stroke-w: 1.6;
+  --illo-accent: var(--ok);
+  --illo-leaf: #dfe9d5;
+
+  --map-filter: saturate(0.7) sepia(0.22) brightness(1.04) contrast(0.92);
+  --map-frame: 1px solid var(--rule);
+  --map-radius: 14px;
+  --marker-fill: var(--accent);
+  --marker-ink: #fffaf2;
+  --line: 6 5;
+  --pill-ink-bg: var(--ink);
+  --pill-ink-fg: var(--bg);
+  --pin-r: 50% 50% 50% 4px;
+  --pill-r: var(--radius-pill);
+  --rail-w: clamp(84px, 20%, 124px);
+  --thumb-ratio: 3 / 4;
+  --dur: 220ms;
+  --ease: cubic-bezier(0.22, 0.8, 0.3, 1);
+
+  /* --- chrome only this style dials up ------------------------------------ */
+  --hero-bg: #a81a17;
+  --hero-ink: #fffaf2;
+  --hero-ink-soft: #f4d9cf;
+  --hero-script: #f0c8a8;
+  --nav-bg: #fdf9f1;
+  --promo-bg: #23331f;
+  --promo-ink: #f2ede0;
+  --promo2-bg: #f8d9d2;
+  --promo2-ink: #7a2118;
+  --footer-bg: #a81a17;
+  --footer-ink: #fffaf2;
+  --thumb-display: block;
+  --thumb-pad: 9px;
+  --thumb-radius: 12px;
+  --thumb-border: 1px solid var(--rule);
+  --thumb-display-bg: var(--thumb-bg);
+  --thumb-bg: #fdf4e8;
+  --script-display: block;
+}

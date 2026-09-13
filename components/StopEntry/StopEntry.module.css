@@ -1,0 +1,259 @@
+/* Card anatomy follows the approved design component. Not one style name
+   appears here — every difference between the styles arrives as a token. */
+
+.entry {
+  position: relative;
+  z-index: 1;
+  background: var(--card-bg);
+  color: var(--ink);
+  border: var(--card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+  transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.entry[data-held] { border-style: dashed; }
+.entry[data-lit] { border-color: var(--accent); }
+.entry[data-lapsed] .dish { text-decoration: line-through; opacity: 0.72; }
+
+/* Slot 1 — top ornament. */
+.edge {
+  display: var(--edge-display);
+  height: var(--edge-height);
+  background: var(--edge-bg);
+  border-bottom: var(--edge-border);
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: var(--rail-w) minmax(0, 1fr);
+  gap: clamp(12px, 1.6vw, 18px);
+  padding: clamp(12px, 1.6vw, 18px);
+}
+
+/* Slot 2 — the rail. Its centre is where the spine runs. */
+.rail { display: flex; flex-direction: column; align-items: center; gap: 9px; }
+
+.index {
+  display: grid;
+  place-items: center;
+  width: var(--index-size);
+  height: var(--index-size);
+  border: var(--index-border);
+  border-radius: var(--index-radius);
+  background: var(--index-bg);
+  color: var(--index-ink);
+  font-family: var(--index-font), monospace;
+  font-weight: var(--index-weight);
+  font-size: calc(var(--index-size) * var(--index-scale));
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.entry[data-lit] .index { background: var(--accent); color: var(--accent-ink); }
+
+.thumb {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  justify-items: center;
+  align-items: center;
+  gap: 2px;
+  width: 100%;
+  aspect-ratio: var(--thumb-ratio, 1 / 1);
+  padding: 7px;
+  border: var(--thumb-border);
+  border-radius: var(--radius-sm);
+  background: var(--thumb-display-bg, transparent);
+  overflow: hidden;
+}
+.plate { max-width: 100%; max-height: 100%; height: auto; display: var(--plate-display, block); }
+.cultivar {
+  align-self: end;
+  font-family: var(--font-ui), monospace;
+  font-size: 8.5px;
+  line-height: 1.35;
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.content { min-width: 0; }
+
+.venueRow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; }
+.venue,
+.handle {
+  font-family: var(--font-ui), monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.venue { letter-spacing: 0.16em; }
+.handle { letter-spacing: 0.12em; color: var(--accent); text-decoration: none; position: relative; }
+.handle:hover { text-decoration: underline; text-underline-offset: 3px; }
+/* Inline link in a wrapping row — grow the tap area past the glyphs rather than
+   padding the text and breaking the line it sits on. */
+.handle::after { content: ''; position: absolute; inset: -14px -8px; }
+
+/* The dish is the headline, and it is red — venue above it in quiet mono. */
+.dish {
+  margin: 4px 0 8px;
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: var(--display-weight);
+  font-style: var(--display-style, normal);
+  text-transform: var(--display-transform);
+  letter-spacing: var(--display-tracking);
+  font-size: clamp(20px, 2.1vw, 27px);
+  line-height: 1.1;
+  color: var(--accent);
+  text-wrap: pretty;
+}
+
+.binomial {
+  display: var(--binomial-display, none);
+  margin: -4px 0 8px;
+  font-family: var(--font-body), Georgia, serif;
+  font-style: italic;
+  font-size: 12.5px;
+  letter-spacing: 0.05em;
+  color: var(--ink-faint);
+}
+
+.place {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 6px 12px 6px 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  color: var(--ink);
+  font: inherit;
+  font-size: 15px;
+  text-align: left;
+}
+/* The pin borrows --pin-r, so it is a teardrop in one style and a square in another. */
+.pin {
+  flex: 0 0 auto;
+  width: 13px;
+  height: 13px;
+  background: var(--accent);
+  border-radius: var(--pin-r);
+  transform: rotate(-45deg);
+}
+.placeText { text-decoration: underline; text-decoration-color: var(--rule-strong); text-underline-offset: 3px; }
+.place:hover .placeText { text-decoration-color: var(--accent); }
+
+.hours { margin: 2px 0 0; font-size: 14.5px; line-height: 1.5; color: var(--ink-soft); }
+.days { font-weight: 700; color: var(--ink); }
+.qualifier { color: var(--ink-faint); }
+
+.season { margin: 6px 0 0; font-size: 15px; line-height: 1.55; color: var(--ink-soft); }
+.season[data-quoted] { font-style: italic; }
+
+.warn {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  margin: 10px 0 0;
+  padding: 9px 12px;
+  font-size: 13.5px;
+  line-height: 1.45;
+  border-radius: var(--radius-sm);
+  background: var(--well-bg);
+  color: var(--ink-soft);
+  border-left: 3px solid var(--rule-strong);
+}
+.warnGlyph {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-family: var(--font-ui), monospace;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+}
+.warn[data-tone='urgent'] { background: var(--flag-bg); color: var(--flag); border-left-color: var(--flag); }
+.warn[data-tone='held'] { border-left-style: dashed; }
+
+.dietNote { margin: 9px 0 0; font-size: 13.5px; line-height: 1.5; color: var(--ink-faint); }
+
+.pills { display: flex; flex-wrap: wrap; gap: 6px; margin: 11px 0 0; }
+.pill {
+  padding: 5px 11px;
+  font-size: 12.5px;
+  border-radius: var(--pill-r, var(--radius-pill));
+  background: var(--well-bg);
+  color: var(--ink-soft);
+  border: 1px solid transparent;
+}
+/* Uncertainty carries a dashed edge and a "?" — never colour alone. */
+.pill[data-unsure] { background: none; border: 1px dashed var(--rule-strong); color: var(--ink-faint); }
+.pill[data-kind='price'] { background: var(--accent); color: var(--accent-ink); font-weight: 700; font-variant-numeric: tabular-nums; }
+/* Its own colour pair: --card-bg is transparent in some styles and --bg is a
+   deep red in another, so neither works as the text colour everywhere. */
+.pill[data-kind='format'] { background: var(--pill-ink-bg); color: var(--pill-ink-fg); }
+
+.actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 13px 0 0; }
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 44px;
+  padding: 11px 18px;
+  border: 1px solid var(--accent);
+  border-radius: var(--pill-r, var(--radius-pill));
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  background: none;
+  color: var(--accent);
+  transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.cta:hover { background: var(--accent); color: var(--accent-ink); }
+.cta[data-on] { background: var(--accent); color: var(--accent-ink); }
+
+.sourcesToggle {
+  min-height: 44px;
+  padding: 11px 4px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-family: var(--font-ui), monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  text-align: left;
+}
+.sourcesToggle:hover { color: var(--accent); }
+
+.sources { display: flex; flex-direction: column; gap: 10px; margin: 10px 0 0; }
+.source {
+  padding: 12px 14px;
+  background: var(--well-bg);
+  border-radius: var(--radius-sm);
+  /* Sage rule on the sources block, per the spec. */
+  border-left: 3px solid var(--ok);
+}
+.quote { margin: 0; font-size: 14px; line-height: 1.55; font-style: italic; color: var(--ink); }
+.sourceMeta {
+  margin: 8px 0 0;
+  font-family: var(--font-ui), monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.sourceMeta a { color: var(--accent); }
+
+@media (max-width: 560px) {
+  .grid { grid-template-columns: clamp(72px, 24%, 96px) minmax(0, 1fr); }
+  .dish { font-size: clamp(19px, 5.4vw, 23px); }
+  .cta { flex: 1 1 auto; justify-content: center; }
+}

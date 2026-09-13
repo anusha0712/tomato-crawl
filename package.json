@@ -1,0 +1,30 @@
+{
+  "name": "tomato-crawl",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "npm run art && npm run check-data && next build",
+    "start": "next start",
+    "lint": "next lint",
+    "matrix": "tsx scripts/build-matrix.ts",
+    "check-data": "tsx scripts/check-data.ts",
+    "audit": "node scripts/audit.mjs",
+    "art": "tsx scripts/build-art-manifest.ts"
+  },
+  "dependencies": {
+    "leaflet": "^1.9.4",
+    "next": "^15.5.4",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/leaflet": "^1.9.20",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "playwright": "^1.63.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

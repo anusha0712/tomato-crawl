@@ -1,0 +1,119 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--hero-bg);
+  color: var(--hero-ink);
+  border-bottom: 1px solid var(--bg-rule);
+  padding: clamp(28px, 5vw, 54px) 26px clamp(30px, 5vw, 56px);
+  isolation: isolate;
+}
+
+/* Art bleeds off the right edge, as in a printed banner. */
+.art {
+  position: absolute;
+  right: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: -1;
+  opacity: 0.95;
+  pointer-events: none;
+}
+.vine {
+  --illo-stroke: var(--hero-script);
+  --illo-fill: color-mix(in srgb, var(--hero-ink) 12%, transparent);
+  --illo-accent: var(--hero-ink-soft);
+  --illo-leaf: none;
+  --illo-stroke-w: 1.4;
+}
+
+.inner {
+  position: relative;
+  max-width: 1420px;
+  margin: 0 auto;
+  /* Clears the rotated script in the left margin at wide widths. */
+  padding-left: clamp(0px, 8vw, 118px);
+}
+
+.title {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: var(--display-weight);
+  font-size: clamp(38px, 7.2vw, 82px);
+  line-height: 1.02;
+  letter-spacing: var(--display-tracking);
+  color: var(--hero-ink);
+  text-wrap: balance;
+}
+
+.sub {
+  margin-top: 14px;
+  font-size: clamp(15px, 1.5vw, 19px);
+  color: var(--hero-ink-soft);
+  max-width: 46ch;
+}
+
+.kicker {
+  margin-top: 16px;
+  font-family: var(--font-ui), sans-serif;
+  font-size: 10.5px;
+  font-weight: var(--ui-weight);
+  text-transform: var(--ui-transform);
+  letter-spacing: var(--ui-tracking);
+  color: var(--hero-ink-soft);
+}
+
+/* Rotated margin asides. Only styles that want them switch them on. */
+.scriptLeft,
+.scriptRight {
+  display: var(--script-display);
+  position: absolute;
+  font-family: var(--font-script), cursive;
+  font-size: clamp(19px, 2.3vw, 31px);
+  line-height: 1.1;
+  color: var(--hero-script);
+  pointer-events: none;
+}
+.scriptLeft { left: 14px; top: 40%; transform: translateY(-50%) rotate(-13deg); }
+.scriptRight { right: 22px; bottom: 22px; transform: rotate(-9deg); text-align: right; }
+
+.seal {
+  display: var(--script-display);
+  /* A real CSS ground under the scallop, so the label's contrast is measurable
+     and does not depend on an SVG sibling painting behind it. */
+  background: var(--hero-seal-bg, #fdf3e3);
+  border-radius: 50%;
+  position: absolute;
+  right: clamp(20px, 9vw, 150px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 132px;
+  height: 132px;
+  place-items: center;
+}
+.seal:where(:not([hidden])) { display: var(--script-display); }
+.sealShape { position: absolute; inset: 0; width: 100%; height: 100%; }
+.sealText {
+  position: relative;
+  display: block;
+  padding-top: 42px;
+  text-align: center;
+  font-family: var(--font-ui), sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .art { right: -120px; opacity: 0.4; }
+  .scriptLeft, .scriptRight, .seal { display: none; }
+  .hero { padding-left: 18px; padding-right: 18px; }
+}
+
+.heroImg {
+  display: block;
+  max-width: min(52vw, 720px);
+  height: auto;
+  object-fit: contain;
+}
