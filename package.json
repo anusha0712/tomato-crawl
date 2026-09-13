@@ -9,7 +9,7 @@
     "lint": "next lint",
     "matrix": "tsx scripts/build-matrix.ts",
     "check-data": "tsx scripts/check-data.ts",
-    "audit": "node scripts/audit.mjs",
+    "audit": "tsx scripts/audit.mjs",
     "art": "tsx scripts/build-art-manifest.ts"
   },
   "dependencies": {

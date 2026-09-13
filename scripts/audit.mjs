@@ -13,6 +13,8 @@ import { existsSync } from 'node:fs'
 import { homedir } from 'node:os'
 
 const BASE = process.env.AUDIT_URL ?? 'http://localhost:3000'
+/** Read from the data, never hardcoded — the stop count grows as research lands. */
+const EXPECTED_STOPS = (await import('../data/stops.ts').catch(() => null))?.STOPS?.length
 /** Next's dev overlay is not part of the product; never let it into a measurement. */
 const NOT_DEVTOOLS = ':not([data-nextjs-dev-tools-button]):not([data-next-mark])'
 const DEV_SEL = '[data-nextjs-dev-tools-button], [data-next-mark], nextjs-portal, #nextjs-dev-tools-menu'
@@ -190,7 +192,9 @@ for (const style of STYLES) {
     }
   })
   if (info.style !== style) fail('style', `${style} did not apply (got ${info.style})`)
-  if (info.stops !== 10) fail('style', `${style} rendered ${info.stops} stops, expected 10`)
+  if (EXPECTED_STOPS && info.stops !== EXPECTED_STOPS)
+    fail('style', `${style} rendered ${info.stops} stops, expected ${EXPECTED_STOPS}`)
+  if (info.stops < 1) fail('style', `${style} rendered no stops at all`)
   if (!info.display || /^(Times|serif)$/i.test(info.display)) fail('fonts', `${style} display font fell back to ${info.display}`)
   if (info.tokensMissing.length) fail('tokens', `${style} missing ${info.tokensMissing.join(', ')}`)
 
@@ -203,7 +207,7 @@ for (const style of STYLES) {
   if (taps.length) for (const t of taps.slice(0, 3)) warn('tap-target', `${style} "${t.label}" ${t.w}×${t.h}`)
 }
 if (!fails.some((f) => f.startsWith('style') || f.startsWith('fonts') || f.startsWith('tokens')))
-  pass(`all ${STYLES.length} styles render with 10 stops, correct fonts and a complete token set`)
+  pass(`all ${STYLES.length} styles render ${EXPECTED_STOPS ?? 'their'} stops, correct fonts and a complete token set`)
 if (!fails.some((f) => f.startsWith('contrast'))) pass('computed text contrast passes WCAG AA in every style')
 
 /* 2 — responsive */
