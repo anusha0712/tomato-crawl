@@ -147,6 +147,19 @@
 .dwell { color: var(--ink-faint); }
 .dwell::before { content: '· '; }
 
+/* When you would actually be standing there. */
+.arrival {
+  margin-top: 3px;
+  font-family: var(--font-ui), monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.arrival[data-warn] { color: var(--flag); font-weight: 700; }
+
+.warning[data-tone='timing'] { background: var(--well-bg); border-left-color: var(--rule-strong); color: var(--ink-soft); }
+
 .ctls { display: flex; gap: 3px; flex: none; }
 .ctl {
   position: relative;

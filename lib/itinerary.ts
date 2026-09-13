@@ -1,5 +1,6 @@
-import type { Stop } from '@/data/stops'
+import type { Stop, Weekday } from '@/data/stops'
 import { walkMinutes, legIsWalkable } from './geo'
+import { hoursOn } from './schedule'
 
 export interface Leg {
   from: Stop
@@ -91,4 +92,96 @@ export function googleFullRouteUrl(stops: Stop[]): string | undefined {
   const via = stops.slice(1, -1)
   if (via.length) p.set('waypoints', via.map((s) => s.coords.join(',')).join('|'))
   return `https://www.google.com/maps/dir/?${p.toString()}`
+}
+
+/* --- Scheduling ------------------------------------------------------------ */
+
+/**
+ * Running the clock over a route.
+ *
+ * Knowing a stop is open on Tuesday is not the same as being able to reach it
+ * while it is open. A Birdee-first crawl puts you outside Unnecessary at 9am,
+ * six hours before it opens — every stop "open on Tuesday", the itinerary
+ * unwalkable. This works out when you would actually arrive.
+ */
+export interface ScheduledStop {
+  stop: Stop
+  /** Minutes past midnight when you would arrive. */
+  arriveAt: number
+  /** Minutes spent waiting for the door to open. */
+  waitMinutes: number
+  /** True when you would arrive after it has shut for the day. */
+  afterClosing: boolean
+  /** True when the venue never stated hours for this day. */
+  unknownHours: boolean
+}
+
+export interface Schedule {
+  startAt: number
+  endAt: number
+  stops: ScheduledStop[]
+  conflicts: number
+}
+
+function toMinutes(hhmm?: string): number | null {
+  if (!hhmm) return null
+  const [h, m] = hhmm.split(':').map(Number)
+  return Number.isFinite(h) ? h * 60 + (m || 0) : null
+}
+
+export function formatClock(mins: number): string {
+  const h24 = Math.floor(mins / 60) % 24
+  const m = mins % 60
+  const suffix = h24 >= 12 ? 'pm' : 'am'
+  const h = h24 % 12 === 0 ? 12 : h24 % 12
+  return m === 0 ? `${h}${suffix}` : `${h}:${String(m).padStart(2, '0')}${suffix}`
+}
+
+/**
+ * @param travelFor minutes between consecutive stops — routed times when the
+ *        Directions API has answered, the walking estimate otherwise.
+ */
+export function scheduleRoute(
+  stops: Stop[],
+  day: Weekday,
+  travelFor: (from: Stop, to: Stop) => number,
+  startAt?: number,
+): Schedule {
+  const first = stops[0] ? hoursOn(stops[0], day) : undefined
+  // Default to the first stop's opening time, or 10am when it never stated one.
+  let clock = startAt ?? toMinutes(first?.opens) ?? 10 * 60
+  const begin = clock
+  const out: ScheduledStop[] = []
+  let conflicts = 0
+
+  stops.forEach((stop, i) => {
+    const h = hoursOn(stop, day)
+    const opens = toMinutes(h?.opens)
+    const closes = toMinutes(h?.closes)
+    let wait = 0
+    let afterClosing = false
+
+    if (opens != null && clock < opens) {
+      wait = opens - clock
+      clock = opens
+    }
+    if (closes != null && clock > closes) {
+      afterClosing = true
+    }
+    if (wait > 20 || afterClosing) conflicts++
+
+    out.push({
+      stop,
+      arriveAt: clock,
+      waitMinutes: wait,
+      afterClosing,
+      unknownHours: !h || (opens == null && closes == null),
+    })
+
+    clock += stop.dwellMinutes
+    const next = stops[i + 1]
+    if (next) clock += travelFor(stop, next)
+  })
+
+  return { startAt: begin, endAt: clock, stops: out, conflicts }
 }

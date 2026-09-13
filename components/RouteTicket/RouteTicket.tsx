@@ -2,7 +2,15 @@
 
 import type { Stop, Weekday } from '@/data/stops'
 import { WEEK } from '@/data/stops'
-import { buildItinerary, suggestOrder, formatDuration, googleTransitUrl, googleFullRouteUrl } from '@/lib/itinerary'
+import {
+  buildItinerary,
+  suggestOrder,
+  formatDuration,
+  googleTransitUrl,
+  googleFullRouteUrl,
+  scheduleRoute,
+  formatClock,
+} from '@/lib/itinerary'
 import { isOpenOn, hoursOn, prettyHoursShort, WEEKDAY_LABEL } from '@/lib/schedule'
 import { useTransitLegs, legKey } from '@/lib/useTransitLegs'
 import { Walk, Train, ArrowUp, ArrowDown, Minus, External, Flag, Clock } from '@/components/tomato/Glyphs'
@@ -34,6 +42,15 @@ export function RouteTicket({ route, day, onDayChange, onMove, onRemove, onReord
       : null
   const travelMinutes = routedTotal ?? itinerary.travelMinutes
   const totalMinutes = travelMinutes + itinerary.dwellMinutes
+
+  // Being open on the chosen day is not the same as being reachable while open.
+  // Run the clock so a six-hour wait outside a shut door is visible here rather
+  // than discovered on the pavement.
+  const schedule = scheduleRoute(route, day, (from, to) => {
+    const routed = transit.status === 'ready' ? transit.legs[legKey(from.id, to.id)] : undefined
+    return routed?.totalMinutes ?? itinerary.legs.find((l) => l.from.id === from.id)?.walkMinutes ?? 0
+  })
+  const byId = new Map(schedule.stops.map((s) => [s.stop.id, s]))
 
   return (
     <section id="route-ticket" className={styles.ticket} aria-labelledby="route-heading">
@@ -80,6 +97,24 @@ export function RouteTicket({ route, day, onDayChange, onMove, onRemove, onReord
             </p>
           ) : null}
 
+          {schedule.conflicts > 0 ? (
+            <p className={styles.warning} data-tone="timing">
+              <Flag size={15} label="Timing" />
+              <span>
+                This order does not work as a day. Leaving at {formatClock(schedule.startAt)} you would{' '}
+                {schedule.stops
+                  .filter((s) => s.waitMinutes > 20 || s.afterClosing)
+                  .map((s) =>
+                    s.afterClosing
+                      ? `reach ${s.stop.venue} after it shuts`
+                      : `wait ${formatDuration(s.waitMinutes)} outside ${s.stop.venue}`,
+                  )
+                  .join(', and ')}
+                . Try reordering, or another day.
+              </span>
+            </p>
+          ) : null}
+
           <ol className={styles.list}>
             {route.map((stop, i) => {
               const leg = itinerary.legs[i]
@@ -110,6 +145,20 @@ export function RouteTicket({ route, day, onDayChange, onMove, onRemove, onReord
                           <span className={styles.dwell}>{stop.dwellMinutes} min here</span>
                         </span>
                       </p>
+
+                      {(() => {
+                        const sc = byId.get(stop.id)
+                        if (!sc || !open) return null
+                        return (
+                          <p className={styles.arrival} data-warn={sc.afterClosing || sc.waitMinutes > 20 || undefined}>
+                            <span className="tabularNums">arrive {formatClock(sc.arriveAt)}</span>
+                            {sc.afterClosing ? <span className={styles.shut}> · after closing</span> : null}
+                            {!sc.afterClosing && sc.waitMinutes > 20 ? (
+                              <span className={styles.shut}> · {formatDuration(sc.waitMinutes)} wait</span>
+                            ) : null}
+                          </p>
+                        )
+                      })()}
                     </div>
 
                     <div className={styles.ctls}>

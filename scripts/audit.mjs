@@ -158,15 +158,34 @@ page.on('console', (m) => {
   if (m.type() !== 'error') return
   const txt = m.text()
   if (expectingApiErrors && /\b(400|Bad Request)\b/.test(txt)) return
+  // A dropped packet on the way to a remote host is not an application error.
+  if (/ERR_NETWORK_CHANGED|ERR_CONNECTION|ERR_INTERNET_DISCONNECTED|ERR_TIMED_OUT/.test(txt)) return
   consoleErrors.push(txt.slice(0, 180))
 })
 page.on('pageerror', (e) => consoleErrors.push('PAGEERROR ' + e.message.slice(0, 180)))
 
+
+/** Auditing a remote URL crosses the network, which blips. Retry transient
+ *  failures rather than losing a whole run to one dropped packet. */
+async function retryNav(fn, what, tries = 4) {
+  for (let i = 1; i <= tries; i++) {
+    try {
+      return await fn()
+    } catch (err) {
+      const transient = /ERR_NETWORK_CHANGED|ERR_CONNECTION|ERR_TIMED_OUT|NS_BINDING|net::ERR_ABORTED|Timeout/i.test(
+        err?.message ?? '',
+      )
+      if (!transient || i === tries) throw err
+      await new Promise((r) => setTimeout(r, 1200 * i))
+    }
+  }
+}
+
 async function load(style) {
-  await page.goto(BASE, { waitUntil: 'domcontentloaded' })
+  await retryNav(() => page.goto(BASE, { waitUntil: 'domcontentloaded' }), 'goto')
   if (style) {
     await page.evaluate((s) => localStorage.setItem('tomato-crawl:style', s), style)
-    await page.reload({ waitUntil: 'domcontentloaded' })
+    await retryNav(() => page.reload({ waitUntil: 'domcontentloaded' }), 'reload')
   }
   await page.waitForSelector('article', { timeout: 20000 })
   await page.waitForTimeout(450)

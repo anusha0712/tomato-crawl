@@ -43,11 +43,33 @@ const browser = await chromium.launch({ executablePath: findBrowser() })
 const ctx = await browser.newContext({ viewport: { width: 1440, height: 960 } })
 const page = await ctx.newPage()
 const consoleErrors = []
-page.on('console', (m) => m.type() === 'error' && consoleErrors.push(m.text().slice(0, 160)))
+page.on('console', (m) => {
+  if (m.type() !== 'error') return
+  const txt = m.text()
+  if (/ERR_NETWORK_CHANGED|ERR_CONNECTION|ERR_INTERNET_DISCONNECTED/.test(txt)) return
+  consoleErrors.push(txt.slice(0, 160))
+})
 page.on('pageerror', (e) => consoleErrors.push('PAGEERROR ' + e.message.slice(0, 160)))
 
+
+/** Auditing a remote URL crosses the network, which blips. Retry transient
+ *  failures rather than losing a whole run to one dropped packet. */
+async function retryNav(fn, what, tries = 4) {
+  for (let i = 1; i <= tries; i++) {
+    try {
+      return await fn()
+    } catch (err) {
+      const transient = /ERR_NETWORK_CHANGED|ERR_CONNECTION|ERR_TIMED_OUT|NS_BINDING|net::ERR_ABORTED|Timeout/i.test(
+        err?.message ?? '',
+      )
+      if (!transient || i === tries) throw err
+      await new Promise((r) => setTimeout(r, 1200 * i))
+    }
+  }
+}
+
 async function setRoute(ids) {
-  await page.goto(BASE, { waitUntil: 'domcontentloaded' })
+  await retryNav(() => page.goto(BASE, { waitUntil: 'domcontentloaded' }), 'goto')
   await page.evaluate(
     ([r]) => {
       localStorage.setItem('tomato-crawl:route', JSON.stringify(r))
@@ -55,7 +77,7 @@ async function setRoute(ids) {
     },
     [ids],
   )
-  await page.reload({ waitUntil: 'domcontentloaded' })
+  await retryNav(() => page.reload({ waitUntil: 'domcontentloaded' }), 'reload')
   await page.waitForSelector('article')
   await page.waitForTimeout(1400)
 }
@@ -290,6 +312,40 @@ const unresolved = full.legs.filter((l) => l.minutes == null).length
 if (unresolved) warn('scale', `${unresolved} legs had no duration on a ${STOPS.length}-stop route`)
 if (!fails.some((f) => f.startsWith('scale')))
   pass(`a full ${STOPS.length}-stop crawl renders ${full.legs.length} legs without falling over`)
+
+/* ── 10b. The clock: a route that cannot be walked must say so ─────────────── */
+// Birdee opens at 8am, Unnecessary not until 3:30pm. Every stop is "open on
+// Tuesday", but you cannot do them in this order without a six-hour wait.
+await setRoute(['birdee-danish', 'elbow-bialy', 'dialogue-focaccia', 'unnecessary-tomato', 'redgate-summer-cake'])
+await page.locator('#route-ticket [role="group"] button').nth(1).click() // Tuesday
+await page.waitForTimeout(2200)
+const timing = await page.evaluate(() => {
+  const ticket = document.querySelector('#route-ticket')
+  const warn = [...ticket.querySelectorAll('[class*="RouteTicket_warning__"]')]
+    .map((e) => e.textContent.trim())
+    .find((x) => /does not work as a day/i.test(x))
+  const arrivals = [...ticket.querySelectorAll('[class*="RouteTicket_arrival__"]')].map((e) => ({
+    text: e.textContent.trim(),
+    warned: e.hasAttribute('data-warn'),
+  }))
+  return { warn, arrivals }
+})
+if (!timing.warn) fail('schedule', 'a route with a six-hour wait showed no timing warning')
+else if (!/wait/i.test(timing.warn)) fail('schedule', `timing warning does not name the wait: "${timing.warn}"`)
+if (!timing.arrivals.length) fail('schedule', 'no arrival times rendered')
+if (!timing.arrivals.some((a) => a.warned)) fail('schedule', 'no arrival row flagged despite the conflict')
+// Arrivals must run forward in time.
+const mins = timing.arrivals.map((a) => {
+  const m = a.text.match(/(\d+)(?::(\d+))?\s*(am|pm)/i)
+  if (!m) return null
+  let h = +m[1] % 12
+  if (/pm/i.test(m[3])) h += 12
+  return h * 60 + (+m[2] || 0)
+}).filter((x) => x != null)
+for (let i = 1; i < mins.length; i++)
+  if (mins[i] < mins[i - 1]) fail('schedule', `arrival times go backwards: ${timing.arrivals[i - 1].text} then ${timing.arrivals[i].text}`)
+if (!fails.some((f) => f.startsWith('schedule')))
+  pass(`the clock catches an unwalkable order — ${timing.arrivals.length} arrival times, conflict flagged`)
 
 /* ── 11. Mobile: the same journey on a phone ───────────────────────────────── */
 await page.setViewportSize({ width: 375, height: 812 })
